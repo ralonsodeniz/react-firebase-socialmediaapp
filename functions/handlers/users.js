@@ -10,7 +10,7 @@ const {
   validateLoginData,
   reduceUserDetails
 } = require("../helpers/helpers");
-const { firebaseConfig } = require("../helpers/config");
+const { firebaseConfig } = require("../config/config");
 
 firebase.initializeApp(firebaseConfig);
 

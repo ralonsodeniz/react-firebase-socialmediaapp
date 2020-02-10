@@ -1,0 +1,205 @@
+[debug] [2020-02-10T14:24:28.129Z] ----------------------------------------------------------------------
+[debug] [2020-02-10T14:24:28.131Z] Command:       /home/rad/.nvm/versions/node/v12.6.0/bin/node /home/rad/.nvm/versions/node/v12.6.0/bin/firebase serve
+[debug] [2020-02-10T14:24:28.131Z] CLI Version:   7.12.1
+[debug] [2020-02-10T14:24:28.131Z] Platform:      linux
+[debug] [2020-02-10T14:24:28.131Z] Node Version:  v12.6.0
+[debug] [2020-02-10T14:24:28.132Z] Time:          Mon Feb 10 2020 15:24:28 GMT+0100 (Central European Standard Time)
+[debug] [2020-02-10T14:24:28.132Z] ----------------------------------------------------------------------
+[debug] [2020-02-10T14:24:28.132Z] 
+[debug] [2020-02-10T14:24:28.140Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-02-10T14:24:28.141Z] > authorizing via signed-in user
+[debug] [2020-02-10T14:24:28.141Z] [iam] checking project fbintegration-7e5f6 for permissions ["firebase.projects.get"]
+[debug] [2020-02-10T14:24:28.142Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/fbintegration-7e5f6:testIamPermissions  
+
+[debug] [2020-02-10T14:24:29.086Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-10T14:24:29.088Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/fbintegration-7e5f6  
+ 
+[debug] [2020-02-10T14:24:29.430Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/mnt/d/webProjects/otherTutorials/react-firebase-socialmediaapp'...
+[info] 
+[debug] [2020-02-10T14:24:29.435Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/fbintegration-7e5f6/webApps/-/config  
+ 
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[info] ✔  functions: Emulator started at http://localhost:5001
+[debug] [2020-02-10T14:24:30.038Z] <<< HTTP RESPONSE 200
+[info] i  functions: Watching "/mnt/d/webProjects/otherTutorials/react-firebase-socialmediaapp/functions" for Cloud Functions...
+[debug] [2020-02-10T14:24:30.115Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-02-10T14:24:30.116Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-02-10T14:24:30.116Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-02-10T14:24:30.117Z] [worker-~diagnostic~-cded60be-a867-45a0-9642-fb0be58b9de3]: Assigning socketPath: /tmp/fire_emu_17126.sock
+[debug] [2020-02-10T14:24:30.117Z] [worker-~diagnostic~-cded60be-a867-45a0-9642-fb0be58b9de3]: BUSY
+[info] i  hosting: Serving hosting files from: build
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2020-02-10T14:24:30.414Z] [runtime-status] [17126] Functions runtime initialized. {"cwd":"/mnt/d/webProjects/otherTutorials/react-firebase-socialmediaapp/functions","node_version":"12.6.0"}
+[debug] [2020-02-10T14:24:30.415Z] [runtime-status] [17126] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-02-10T14:24:30.417Z] [runtime-status] [17126] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"/mnt/d/webProjects/otherTutorials/react-firebase-socialmediaapp/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2020-02-10T14:24:30.419Z] [runtime-status] [17126] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/mnt/d/webProjects/otherTutorials/react-firebase-socialmediaapp/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2020-02-10T14:24:30.420Z] [runtime-status] [17126] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/mnt/d/webProjects/otherTutorials/react-firebase-socialmediaapp/functions/node_modules/firebase-functions/lib/index.js"}
+[info] ✔  functions[api]: http function initialized (http://localhost:5001/fbintegration-7e5f6/europe-west1/api).
+[info] i  functions[createNotificationOnLike]: function ignored because the firestore emulator does not exist or is not running.
+[info] i  functions[deleteNotificationOnUnlike]: function ignored because the firestore emulator does not exist or is not running.
+[info] i  functions[createNotificationOnComment]: function ignored because the firestore emulator does not exist or is not running.
+[info] i  functions[onUserImageChange]: function ignored because the firestore emulator does not exist or is not running.
+[info] i  functions[onScreamDelete]: function ignored because the firestore emulator does not exist or is not running.
+[debug] [2020-02-10T14:24:31.346Z] [worker-~diagnostic~-cded60be-a867-45a0-9642-fb0be58b9de3]: IDLE
+[debug] [2020-02-10T14:25:45.957Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-02-10T14:25:45.957Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-02-10T14:25:45.957Z] Accepted request POST /fbintegration-7e5f6/europe-west1/api/login --> api
+[debug] [2020-02-10T14:25:45.982Z] [worker-pool] addWorker(api)
+[debug] [2020-02-10T14:25:45.982Z] [worker-pool] Adding worker with key api, total=1
+[debug] [2020-02-10T14:25:45.982Z] [worker-pool] submitWork(triggerId=api)
+[debug] [2020-02-10T14:25:45.982Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: Assigning socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:25:45.983Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: BUSY
+[debug] [2020-02-10T14:25:46.288Z] [runtime-status] [17137] Functions runtime initialized. {"cwd":"/mnt/d/webProjects/otherTutorials/react-firebase-socialmediaapp/functions","node_version":"12.6.0"}
+[debug] [2020-02-10T14:25:46.290Z] [runtime-status] [17137] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-02-10T14:25:46.292Z] [runtime-status] [17137] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"/mnt/d/webProjects/otherTutorials/react-firebase-socialmediaapp/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2020-02-10T14:25:46.294Z] [runtime-status] [17137] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/mnt/d/webProjects/otherTutorials/react-firebase-socialmediaapp/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2020-02-10T14:25:46.295Z] [runtime-status] [17137] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/mnt/d/webProjects/otherTutorials/react-firebase-socialmediaapp/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2020-02-10T14:25:47.249Z] [runtime-status] [17137] Trigger "api" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "api"
+[debug] [2020-02-10T14:25:47.250Z] [runtime-status] [17137] triggerDefinition {"regions":["europe-west1"],"httpsTrigger":{},"name":"api","entryPoint":"api"}
+[debug] [2020-02-10T14:25:47.251Z] [runtime-status] [17137] Running api in mode HTTPS
+[debug] [2020-02-10T14:25:47.254Z] [runtime-status] [17137] Attempting to listen to socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:25:47.260Z] [functions] Runtime ready! Sending request!
+[debug] [2020-02-10T14:25:47.283Z] [runtime-status] [17137] Ephemeral server handling POST request
+[debug] [2020-02-10T14:25:47.305Z] [runtime-status] [17137] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2020-02-10T14:25:48.573Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: IDLE
+[debug] [2020-02-10T14:25:48.574Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-02-10T14:25:52.231Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-02-10T14:25:52.232Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-02-10T14:25:52.232Z] Accepted request GET /fbintegration-7e5f6/europe-west1/api/screams --> api
+[debug] [2020-02-10T14:25:52.232Z] [worker-pool] submitWork(triggerId=api)
+[debug] [2020-02-10T14:25:52.232Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: Assigning socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:25:52.232Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: BUSY
+[debug] [2020-02-10T14:25:52.233Z] [runtime-status] [17137] Trigger "api" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "api"
+[debug] [2020-02-10T14:25:52.235Z] [runtime-status] [17137] triggerDefinition {"regions":["europe-west1"],"httpsTrigger":{},"name":"api","entryPoint":"api"}
+[debug] [2020-02-10T14:25:52.236Z] [runtime-status] [17137] Running api in mode HTTPS
+[debug] [2020-02-10T14:25:52.236Z] [runtime-status] [17137] Attempting to listen to socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:25:52.238Z] [functions] Runtime ready! Sending request!
+[debug] [2020-02-10T14:25:52.240Z] [runtime-status] [17137] Ephemeral server handling GET request
+[debug] [2020-02-10T14:25:52.246Z] [runtime-status] [17137] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2020-02-10T14:25:52.970Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: IDLE
+[debug] [2020-02-10T14:25:52.970Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-02-10T14:26:21.423Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-02-10T14:26:21.423Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-02-10T14:26:21.423Z] Accepted request POST /fbintegration-7e5f6/europe-west1/api/scream --> api
+[debug] [2020-02-10T14:26:21.423Z] [worker-pool] submitWork(triggerId=api)
+[debug] [2020-02-10T14:26:21.423Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: Assigning socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:26:21.423Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: BUSY
+[debug] [2020-02-10T14:26:21.424Z] [runtime-status] [17137] Trigger "api" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "api"
+[debug] [2020-02-10T14:26:21.425Z] [runtime-status] [17137] triggerDefinition {"regions":["europe-west1"],"httpsTrigger":{},"name":"api","entryPoint":"api"}
+[debug] [2020-02-10T14:26:21.425Z] [runtime-status] [17137] Running api in mode HTTPS
+[debug] [2020-02-10T14:26:21.425Z] [runtime-status] [17137] Attempting to listen to socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:26:21.426Z] [functions] Runtime ready! Sending request!
+[debug] [2020-02-10T14:26:21.428Z] [runtime-status] [17137] Ephemeral server handling POST request
+[debug] [2020-02-10T14:26:22.181Z] [runtime-status] [17137] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2020-02-10T14:26:23.034Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: IDLE
+[debug] [2020-02-10T14:26:23.034Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-02-10T14:26:29.904Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-02-10T14:26:29.904Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-02-10T14:26:29.904Z] Accepted request GET /fbintegration-7e5f6/europe-west1/api/screams --> api
+[debug] [2020-02-10T14:26:29.904Z] [worker-pool] submitWork(triggerId=api)
+[debug] [2020-02-10T14:26:29.904Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: Assigning socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:26:29.904Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: BUSY
+[debug] [2020-02-10T14:26:29.905Z] [runtime-status] [17137] Trigger "api" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "api"
+[debug] [2020-02-10T14:26:29.906Z] [runtime-status] [17137] triggerDefinition {"regions":["europe-west1"],"httpsTrigger":{},"name":"api","entryPoint":"api"}
+[debug] [2020-02-10T14:26:29.906Z] [runtime-status] [17137] Running api in mode HTTPS
+[debug] [2020-02-10T14:26:29.907Z] [runtime-status] [17137] Attempting to listen to socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:26:29.908Z] [functions] Runtime ready! Sending request!
+[debug] [2020-02-10T14:26:29.909Z] [runtime-status] [17137] Ephemeral server handling GET request
+[debug] [2020-02-10T14:26:29.910Z] [runtime-status] [17137] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2020-02-10T14:26:30.118Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: IDLE
+[debug] [2020-02-10T14:26:30.119Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-02-10T14:26:55.376Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-02-10T14:26:55.376Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-02-10T14:26:55.376Z] Accepted request POST /fbintegration-7e5f6/europe-west1/api/user/image --> api
+[debug] [2020-02-10T14:26:55.376Z] [worker-pool] submitWork(triggerId=api)
+[debug] [2020-02-10T14:26:55.376Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: Assigning socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:26:55.376Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: BUSY
+[debug] [2020-02-10T14:26:55.377Z] [runtime-status] [17137] Trigger "api" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "api"
+[debug] [2020-02-10T14:26:55.378Z] [runtime-status] [17137] triggerDefinition {"regions":["europe-west1"],"httpsTrigger":{},"name":"api","entryPoint":"api"}
+[debug] [2020-02-10T14:26:55.378Z] [runtime-status] [17137] Running api in mode HTTPS
+[debug] [2020-02-10T14:26:55.378Z] [runtime-status] [17137] Attempting to listen to socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:26:55.378Z] [functions] Runtime ready! Sending request!
+[debug] [2020-02-10T14:26:55.380Z] [runtime-status] [17137] Ephemeral server handling POST request
+[debug] [2020-02-10T14:26:55.381Z] [runtime-status] [17137] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2020-02-10T14:26:56.505Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: IDLE
+[debug] [2020-02-10T14:26:56.505Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-02-10T14:27:10.715Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-02-10T14:27:10.715Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-02-10T14:27:10.715Z] Accepted request POST /fbintegration-7e5f6/europe-west1/api/user --> api
+[debug] [2020-02-10T14:27:10.715Z] [worker-pool] submitWork(triggerId=api)
+[debug] [2020-02-10T14:27:10.716Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: Assigning socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:27:10.716Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: BUSY
+[debug] [2020-02-10T14:27:10.716Z] [runtime-status] [17137] Trigger "api" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "api"
+[debug] [2020-02-10T14:27:10.717Z] [runtime-status] [17137] triggerDefinition {"regions":["europe-west1"],"httpsTrigger":{},"name":"api","entryPoint":"api"}
+[debug] [2020-02-10T14:27:10.718Z] [runtime-status] [17137] Running api in mode HTTPS
+[debug] [2020-02-10T14:27:10.719Z] [runtime-status] [17137] Attempting to listen to socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:27:10.720Z] [functions] Runtime ready! Sending request!
+[debug] [2020-02-10T14:27:10.723Z] [runtime-status] [17137] Ephemeral server handling POST request
+[debug] [2020-02-10T14:27:10.723Z] [runtime-status] [17137] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2020-02-10T14:27:11.199Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: IDLE
+[debug] [2020-02-10T14:27:11.199Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-02-10T14:27:22.792Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-02-10T14:27:22.792Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-02-10T14:27:22.792Z] Accepted request GET /fbintegration-7e5f6/europe-west1/api/user --> api
+[debug] [2020-02-10T14:27:22.793Z] [worker-pool] submitWork(triggerId=api)
+[debug] [2020-02-10T14:27:22.793Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: Assigning socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:27:22.793Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: BUSY
+[debug] [2020-02-10T14:27:22.793Z] [runtime-status] [17137] Trigger "api" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "api"
+[debug] [2020-02-10T14:27:22.794Z] [runtime-status] [17137] triggerDefinition {"regions":["europe-west1"],"httpsTrigger":{},"name":"api","entryPoint":"api"}
+[debug] [2020-02-10T14:27:22.794Z] [runtime-status] [17137] Running api in mode HTTPS
+[debug] [2020-02-10T14:27:22.794Z] [runtime-status] [17137] Attempting to listen to socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:27:22.795Z] [functions] Runtime ready! Sending request!
+[debug] [2020-02-10T14:27:22.796Z] [runtime-status] [17137] Ephemeral server handling GET request
+[debug] [2020-02-10T14:27:22.796Z] [runtime-status] [17137] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2020-02-10T14:27:23.678Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: IDLE
+[debug] [2020-02-10T14:27:23.678Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-02-10T14:27:50.606Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-02-10T14:27:50.606Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-02-10T14:27:50.606Z] Accepted request GET /fbintegration-7e5f6/europe-west1/api/scream/97bgjRudpKVGngROzxAr --> api
+[debug] [2020-02-10T14:27:50.606Z] [worker-pool] submitWork(triggerId=api)
+[debug] [2020-02-10T14:27:50.607Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: Assigning socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:27:50.607Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: BUSY
+[debug] [2020-02-10T14:27:50.607Z] [runtime-status] [17137] Trigger "api" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "api"
+[debug] [2020-02-10T14:27:50.608Z] [runtime-status] [17137] triggerDefinition {"regions":["europe-west1"],"httpsTrigger":{},"name":"api","entryPoint":"api"}
+[debug] [2020-02-10T14:27:50.608Z] [runtime-status] [17137] Running api in mode HTTPS
+[debug] [2020-02-10T14:27:50.608Z] [runtime-status] [17137] Attempting to listen to socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:27:50.609Z] [functions] Runtime ready! Sending request!
+[debug] [2020-02-10T14:27:50.610Z] [runtime-status] [17137] Ephemeral server handling GET request
+[debug] [2020-02-10T14:27:50.610Z] [runtime-status] [17137] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2020-02-10T14:27:51.045Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: IDLE
+[debug] [2020-02-10T14:27:51.045Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-02-10T14:28:10.900Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-02-10T14:28:10.901Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-02-10T14:28:10.901Z] Accepted request POST /fbintegration-7e5f6/europe-west1/api/scream/5CSBo7scUK6qN3JGL1Kv/comment --> api
+[debug] [2020-02-10T14:28:10.902Z] [worker-pool] submitWork(triggerId=api)
+[debug] [2020-02-10T14:28:10.902Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: Assigning socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:28:10.902Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: BUSY
+[debug] [2020-02-10T14:28:10.902Z] [runtime-status] [17137] Trigger "api" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "api"
+[debug] [2020-02-10T14:28:10.903Z] [runtime-status] [17137] triggerDefinition {"regions":["europe-west1"],"httpsTrigger":{},"name":"api","entryPoint":"api"}
+[debug] [2020-02-10T14:28:10.904Z] [runtime-status] [17137] Running api in mode HTTPS
+[debug] [2020-02-10T14:28:10.904Z] [runtime-status] [17137] Attempting to listen to socketPath: /tmp/fire_emu_17137.sock
+[debug] [2020-02-10T14:28:10.905Z] [functions] Runtime ready! Sending request!
+[debug] [2020-02-10T14:28:10.907Z] [runtime-status] [17137] Ephemeral server handling POST request
+[debug] [2020-02-10T14:28:10.907Z] [runtime-status] [17137] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2020-02-10T14:28:11.332Z] [worker-api-9316f51b-9e56-4812-9fc1-0ca69b2b3859]: IDLE
+[debug] [2020-02-10T14:28:11.332Z] [work-queue] {"queueLength":0,"workRunningCount":0}
