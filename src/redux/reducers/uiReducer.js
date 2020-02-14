@@ -1,0 +1,32 @@
+import { UI } from "../types/uiTypes";
+
+const INITIAL_STATE = {
+  errors: {},
+  loading: false
+};
+
+const uiReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case UI.SET_ERRORS:
+      return {
+        ...state,
+        loading: false,
+        errors: action.payload
+      };
+    case UI.CLEAR_ERRORS:
+      return {
+        ...state,
+        loading: false,
+        errors: {}
+      };
+    case UI.LOADING_UI:
+      return {
+        ...state,
+        loading: action.payload
+      };
+    default:
+      return state;
+  }
+};
+
+export default uiReducer;

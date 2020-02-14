@@ -1,0 +1,5 @@
+export const UI = {
+  SET_ERRORS: "SET_ERRORS",
+  LOADING_UI: "LOADING_UI",
+  CLEAR_ERRORS: "CLEAR_ERRORS"
+};
