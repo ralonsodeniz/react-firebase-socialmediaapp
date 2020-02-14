@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   credentials: {},
   likes: [],
   notifications: [],
-  loading: false
+  loading: true
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
