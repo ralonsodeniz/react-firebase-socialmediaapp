@@ -4,27 +4,36 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 
 import Scream from "../../components/Scream/Scream";
+import Profile from "../../components/Profile/Profile";
 
 const Home = () => {
-  const [state, setState] = useState({
-    screams: [],
-    loading: true
-  });
-  const { screams } = state;
+  const [screams, setScreams] = useState([]);
 
   useEffect(() => {
+    // we create an abort controller to cleanup the fetch in the case the component is unmounted and the fetch has not finished
+    const source = axios.CancelToken.source();
+
     const fetchScreams = async () => {
-      setState({ ...state, loading: true });
       try {
         // we do not need to put the entire rest api url, just the endpoint, because in te pacakge.json we have added the proxy key with the url to the rest api
-        const res = await axios.get("/screams");
-        setState({ loading: false, screams: res.data });
+        const res = await axios.get("/screams", {
+          cancelToken: source.token
+        });
+        setScreams(res.data);
       } catch (error) {
-        setState({ loading: false, screams: [] });
-        console.log(error);
+        if (axios.isCancel(error)) {
+          console.log("Api cancelled");
+        } else {
+          console.log(error.message);
+        }
       }
     };
+
     fetchScreams();
+    // cleanup function to cancel the api request
+    return () => {
+      source.cancel();
+    };
   }, []);
 
   const recentScreamsMarkup =
@@ -42,7 +51,7 @@ const Home = () => {
         {recentScreamsMarkup}
       </Grid>
       <Grid item sm={4} xs={12}>
-        <p>Profile...</p>
+        <Profile />
       </Grid>
     </Grid>
   );

@@ -76,3 +76,12 @@ export const checkStoredToken = () => {
     throw new Error(jsonObjError);
   }
 };
+
+export const postFormDataToImage = async formData => {
+  try {
+    await axios.post("/user/image", formData);
+  } catch (error) {
+    const jsonObjError = JSON.stringify(error.response.data);
+    throw new Error(jsonObjError);
+  }
+};

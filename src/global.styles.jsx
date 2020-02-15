@@ -18,7 +18,7 @@ body {
     monospace;
 }
 
-a{
+a {
   text-decoration:none
 }
 `;

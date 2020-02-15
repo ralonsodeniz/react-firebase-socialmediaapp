@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   credentials: {},
   likes: [],
   notifications: [],
-  loading: true
+  loading: false
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -13,7 +13,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case USER.SET_AUTHENTICATED:
       return {
         ...state,
-        authenthicated: true
+        authenthicated: true,
+        loading: false,
+        ...action.payload
       };
     case USER.SET_UNAUTHENTICATED:
       return INITIAL_STATE;
@@ -21,19 +23,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: action.payload
-      };
-    case USER.LOGIN_SUCCESS:
-      return {
-        ...state,
-        authenthicated: true,
-        loading: false,
-        ...action.payload
-      };
-    case USER.SIGNUP_SUCCESS:
-      return {
-        ...state,
-        authenthicated: true,
-        ...action.payload
       };
     default:
       return state;

@@ -4,20 +4,26 @@ import { USER } from "../types/userTypes";
 
 import {
   setUnauthenticated,
-  signupSuccess,
-  loginSuccess,
+  setAuthenticated,
   setLoadingUser,
   resetLoadingUser
 } from "../actions/userActions";
 
-import { clearErrors, setErrors, setLoadingUi } from "../actions/uiActions";
+import {
+  clearErrors,
+  setErrors,
+  setLoadingUi,
+  resetUiInitialLoading,
+  setUiInitialLoading
+} from "../actions/uiActions";
 
 import {
   postUserDataToLogin,
   postNewUserDataToSignup,
   getDataFromUser,
   userLogout,
-  checkStoredToken
+  checkStoredToken,
+  postFormDataToImage
 } from "../helpers/userHelpers";
 
 // user signup
@@ -29,12 +35,14 @@ export function* signup({ payload }) {
   try {
     yield put(setLoadingUi());
     yield call(postNewUserDataToSignup, payload);
+    yield put(setLoadingUser());
     const newUserData = yield call(getDataFromUser);
-    yield put(signupSuccess(newUserData));
+    yield put(setAuthenticated(newUserData));
     yield put(clearErrors());
   } catch (error) {
     const jsObjError = JSON.parse(error.message);
     yield put(setErrors(jsObjError));
+    yield put(resetLoadingUser());
     console.log(jsObjError);
   }
 }
@@ -51,13 +59,15 @@ export function* loginWithEmailAndPassword({ payload }) {
   try {
     yield put(setLoadingUi());
     yield call(postUserDataToLogin, payload);
+    yield put(setLoadingUser());
     const userData = yield call(getDataFromUser);
-    yield put(loginSuccess(userData));
+    yield put(setAuthenticated(userData));
     yield put(clearErrors());
   } catch (error) {
     // we transofrme the json string we receive in the error message into the js obj with the errors to set them in the reducer
     const jsObjError = JSON.parse(error.message);
     yield put(setErrors(jsObjError));
+    yield put(resetLoadingUser());
     console.log(jsObjError);
   }
 }
@@ -86,17 +96,38 @@ export function* onCheckUserStart() {
 
 export function* checkUser() {
   try {
-    yield put(setLoadingUser());
+    yield put(setUiInitialLoading());
     const isTokenValid = yield call(checkStoredToken);
     if (isTokenValid) {
       const userData = yield call(getDataFromUser);
-      yield put(loginSuccess(userData));
+      yield put(setAuthenticated(userData));
       yield put(clearErrors());
     } else {
       yield call(userLogout);
       yield put(setUnauthenticated());
     }
+    yield put(resetUiInitialLoading());
+  } catch (error) {
+    const jsObjError = JSON.parse(error.message);
+    yield put(setErrors(jsObjError));
     yield put(resetLoadingUser());
+    yield put(resetUiInitialLoading());
+    console.log(jsObjError);
+  }
+}
+
+// upload user image
+export function* onUploadUserImageStart() {
+  yield takeLatest(USER.UPLOAD_USER_IMAGE_START, uploadUserImage);
+}
+
+export function* uploadUserImage({ payload }) {
+  try {
+    yield call(postFormDataToImage, payload);
+    yield put(setLoadingUser());
+    const userData = yield call(getDataFromUser);
+    yield put(setAuthenticated(userData));
+    yield put(clearErrors());
   } catch (error) {
     const jsObjError = JSON.parse(error.message);
     yield put(setErrors(jsObjError));
@@ -111,6 +142,7 @@ export function* userSagas() {
     call(onloginWithEmailAndPasswordStart),
     call(onSignupStart),
     call(onSignoutStart),
-    call(onCheckUserStart)
+    call(onCheckUserStart),
+    call(onUploadUserImageStart)
   ]);
 }

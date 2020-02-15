@@ -1,7 +1,8 @@
 import { USER } from "../types/userTypes";
 
-export const setAuthenticated = () => ({
-  type: USER.SET_AUTHENTICATED
+export const setAuthenticated = userData => ({
+  type: USER.SET_AUTHENTICATED,
+  payload: userData
 });
 
 export const setUnauthenticated = () => ({
@@ -13,19 +14,9 @@ export const signupStart = signupData => ({
   payload: signupData
 });
 
-export const signupSuccess = newUserData => ({
-  type: USER.SIGNUP_SUCCESS,
-  payload: newUserData
-});
-
 export const loginWithEmailAndPasswordStart = loginData => ({
   type: USER.LOGIN_WITH_EMAIL_AND_PASSWORD_START,
   payload: loginData
-});
-
-export const loginSuccess = userData => ({
-  type: USER.LOGIN_SUCCESS,
-  payload: userData
 });
 
 export const logoutStart = () => ({
@@ -46,7 +37,7 @@ export const checkUserStart = () => ({
   type: USER.CHECK_USER_START
 });
 
-export const checkUserSuccess = userData => ({
-  type: USER.CHECK_USER_SUCCESS,
-  payload: userData
+export const uploadUserImageStart = formData => ({
+  type: USER.UPLOAD_USER_IMAGE_START,
+  payload: formData
 });

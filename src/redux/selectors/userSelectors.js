@@ -13,3 +13,15 @@ export const selectUserLoading = createSelector(
   [selectUser],
   user => user.loading
 );
+
+export const selectUserCredentials = createSelector(
+  [selectUser],
+  user => user.credentials
+);
+
+export const selectUserLikes = createSelector([selectUser], user => user.likes);
+
+export const selectUserNotifications = createSelector(
+  [selectUser],
+  user => user.notifications
+);

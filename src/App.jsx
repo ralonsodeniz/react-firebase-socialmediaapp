@@ -6,10 +6,8 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import { checkUserStart } from "./redux/actions/userActions";
-import {
-  selectUserAuthenticated,
-  selectUserLoading
-} from "./redux/selectors/userSelectors";
+import { selectUserAuthenticated } from "./redux/selectors/userSelectors";
+import { selectUiInitialLoading } from "./redux/selectors/uiSelectors";
 // pages
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
@@ -23,18 +21,16 @@ import { AppContainer } from "./App.styles";
 
 const selectAppData = createStructuredSelector({
   authenticated: selectUserAuthenticated,
-  userLoading: selectUserLoading
+  uiInitialLoading: selectUiInitialLoading
 });
 
 const App = () => {
   const dispatch = useDispatch();
 
-  const { authenticated, userLoading } = useSelector(
+  const { authenticated, uiInitialLoading } = useSelector(
     selectAppData,
     shallowEqual
   );
-
-  // TODO USER LOADING
 
   useEffect(() => {
     // we check if there is a user token on app refresh and if it is valid
@@ -48,8 +44,8 @@ const App = () => {
         <GlobalStyles />
         <Navbar />
         <AppContainer>
-          {userLoading ? (
-            <div> USER IS LOADING </div>
+          {uiInitialLoading ? (
+            <div> app is loading </div>
           ) : (
             <Switch>
               <Route exact path="/" component={Home} />
