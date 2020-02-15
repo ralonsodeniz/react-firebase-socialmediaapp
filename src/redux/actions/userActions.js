@@ -41,3 +41,8 @@ export const uploadUserImageStart = formData => ({
   type: USER.UPLOAD_USER_IMAGE_START,
   payload: formData
 });
+
+export const updateUserDetailsStart = userDetails => ({
+  type: USER.UPDATE_USER_DETAILS_START,
+  payload: userDetails
+});

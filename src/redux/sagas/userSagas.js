@@ -23,7 +23,8 @@ import {
   getDataFromUser,
   userLogout,
   checkStoredToken,
-  postFormDataToImage
+  postFormDataToImage,
+  postUserDetailsToUser
 } from "../helpers/userHelpers";
 
 // user signup
@@ -136,6 +137,26 @@ export function* uploadUserImage({ payload }) {
   }
 }
 
+// update user details
+export function* onUpdateUserDetailsStart() {
+  yield takeLatest(USER.UPDATE_USER_DETAILS_START, updateUserDetails);
+}
+
+export function* updateUserDetails({ payload }) {
+  try {
+    yield call(postUserDetailsToUser, payload);
+    yield put(setLoadingUser());
+    const userData = yield call(getDataFromUser);
+    yield put(setAuthenticated(userData));
+    yield put(clearErrors());
+  } catch (error) {
+    const jsObjError = JSON.parse(error.message);
+    yield put(setErrors(jsObjError));
+    yield put(resetLoadingUser());
+    console.log(jsObjError);
+  }
+}
+
 // root saga creator for user with all the tiggering generation functions of the saga
 export function* userSagas() {
   yield all([
@@ -143,6 +164,7 @@ export function* userSagas() {
     call(onSignupStart),
     call(onSignoutStart),
     call(onCheckUserStart),
-    call(onUploadUserImageStart)
+    call(onUploadUserImageStart),
+    call(onUpdateUserDetailsStart)
   ]);
 }

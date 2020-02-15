@@ -14,6 +14,8 @@ import {
   selectUserAuthenticated
 } from "../../redux/selectors/userSelectors";
 
+import EditDetails from "../EditDetails/EditDetails";
+
 import Button from "@material-ui/core/Button";
 import MuiLink from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
@@ -22,6 +24,7 @@ import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import EditIcon from "@material-ui/icons/Edit";
 import Tooltip from "@material-ui/core/Tooltip";
+import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 
 import {
   uploadUserImageStart,
@@ -73,6 +76,10 @@ const Profile = () => {
   const handleEditPicture = () => {
     fileInputRef.current.click();
   };
+
+  const handleLogout = useCallback(() => {
+    dispatch(logoutStart());
+  }, [dispatch]);
 
   const profileMarkUp = !userLoading ? (
     userAuthenticated ? (
@@ -129,6 +136,12 @@ const Profile = () => {
           <CalendarToday color="primary" />{" "}
           <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
         </ProfileDetailsContainer>
+        <Tooltip title="Logout" placement="top">
+          <ProfileIconButton onClick={handleLogout}>
+            <KeyboardReturn color="primary" />
+          </ProfileIconButton>
+        </Tooltip>
+        <EditDetails />
       </ProfilePaper>
     ) : (
       <ProfilePaper>

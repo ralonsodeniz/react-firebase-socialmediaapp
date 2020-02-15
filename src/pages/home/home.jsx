@@ -36,19 +36,26 @@ const Home = () => {
     };
   }, []);
 
-  const recentScreamsMarkup =
-    screams.length > 0 ? (
-      screams.map((scream, screamIndex) => (
-        <Scream key={screamIndex} scream={scream} />
-      ))
-    ) : (
-      <p>Loading...</p>
-    );
+  // const recentScreamsMarkup =
+  //   screams.length > 0 ? (
+  //     screams.map((scream, screamIndex) => (
+  //       <Scream key={screamIndex} scream={scream} />
+  //     ))
+  //   ) : (
+  //     <p>Loading...</p>
+  //   );
 
   return (
-    <Grid container spacing={10}>
+    <Grid container spacing={7}>
       <Grid item sm={8} xs={12}>
-        {recentScreamsMarkup}
+        {/* {recentScreamsMarkup} */}
+        {screams.length > 0 ? (
+          screams.map((scream, screamIndex) => (
+            <Scream key={screamIndex} scream={scream} />
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
       </Grid>
       <Grid item sm={4} xs={12}>
         <Profile />

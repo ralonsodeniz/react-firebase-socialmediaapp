@@ -1,4 +1,4 @@
-import { styled } from "@material-ui/core/styles";
+import styled from "@material-ui/core/styles/styled";
 import styledComponent from "styled-components";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";

@@ -85,3 +85,12 @@ export const postFormDataToImage = async formData => {
     throw new Error(jsonObjError);
   }
 };
+
+export const postUserDetailsToUser = async userDetails => {
+  try {
+    await axios.post("/user", userDetails);
+  } catch (error) {
+    const jsonObjError = JSON.stringify(error.response.data);
+    throw new Error(jsonObjError);
+  }
+};

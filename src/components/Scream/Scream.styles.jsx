@@ -1,4 +1,4 @@
-import { styled } from "@material-ui/core/styles";
+import styled from "@material-ui/core/styles/styled";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
