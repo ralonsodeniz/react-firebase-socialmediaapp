@@ -64,13 +64,6 @@ const Home = () => {
   return (
     <Grid container spacing={7}>
       <Grid item sm={8} xs={12}>
-        {/* {!dataLoading && screams.length ? (
-          screams.map((scream, screamIndex) => (
-            <Scream key={screamIndex} scream={scream} />
-          ))
-        ) : (
-          <p>Screams loading...</p>
-        )} */}
         {recentScreamsMarkUp}
       </Grid>
       <Grid item sm={4} xs={12}>

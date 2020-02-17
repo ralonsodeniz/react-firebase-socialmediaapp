@@ -13,15 +13,18 @@ import {
 } from "../../redux/actions/dataActions";
 import {
   selectUserLikes,
-  selectUserAuthenticated
+  selectUserAuthenticated,
+  selectUserHandle
 } from "../../redux/selectors/userSelectors";
 import { selectDataScream } from "../../redux/selectors/dataSelectors";
+
+import DeleteScream from "../DeleteScream/DeleteScream";
+import CustomButton from "../CustomButton/CustomButton";
 
 import {
   ScreamCard,
   ScreamCardContent,
-  ScreamCardMedia,
-  ScreamIconButton
+  ScreamCardMedia
 } from "./Scream.styles";
 import Typography from "@material-ui/core/Typography";
 import ChatIcon from "@material-ui/icons/Chat";
@@ -33,7 +36,8 @@ dayjs.extend(relativeTime);
 
 const selectScreamData = createStructuredSelector({
   userLikes: selectUserLikes,
-  userAuthenticated: selectUserAuthenticated
+  userAuthenticated: selectUserAuthenticated,
+  currentUserHanle: selectUserHandle
 });
 
 const Scream = ({ screamId }) => {
@@ -53,7 +57,7 @@ const Scream = ({ screamId }) => {
     shallowEqual
   );
 
-  const { userLikes, userAuthenticated } = useSelector(
+  const { userLikes, userAuthenticated, currentUserHanle } = useSelector(
     selectScreamData,
     shallowEqual
   );
@@ -72,26 +76,29 @@ const Scream = ({ screamId }) => {
   }, [dispatch, screamId]);
 
   const likeButton = !userAuthenticated ? (
-    <Tooltip title="like" placement="top">
-      <ScreamIconButton>
-        <Link to="/login">
-          <FavoriteBorder color="primary" />
-        </Link>
-      </ScreamIconButton>
-    </Tooltip>
-  ) : likedScream ? (
-    <Tooltip title="unlike" placement="top">
-      <ScreamIconButton onClick={handleUnlikeScream}>
-        <Favorite color="primary" />
-      </ScreamIconButton>
-    </Tooltip>
-  ) : (
-    <Tooltip title="like" placement="top">
-      <ScreamIconButton onClick={handleLikeScream}>
+    <Link to="/login">
+      <CustomButton title="like" placement="top">
         <FavoriteBorder color="primary" />
-      </ScreamIconButton>
-    </Tooltip>
+      </CustomButton>
+    </Link>
+  ) : likedScream ? (
+    <CustomButton
+      title="unlike"
+      placement="top"
+      handleClick={handleUnlikeScream}
+    >
+      <Favorite color="primary" />
+    </CustomButton>
+  ) : (
+    <CustomButton title="like" placement="top" handleClick={handleLikeScream}>
+      <FavoriteBorder color="primary" />
+    </CustomButton>
   );
+
+  const deleteButton =
+    userAuthenticated && userHandle === currentUserHanle ? (
+      <DeleteScream screamId={screamId} />
+    ) : null;
 
   return (
     <ScreamCard>
@@ -105,17 +112,16 @@ const Scream = ({ screamId }) => {
         >
           {userHandle}
         </Typography>
+        {deleteButton}
         <Typography variant="body2" color="textSecondary">
           {dayjs(createdAt).fromNow()}
         </Typography>
         <Typography variant="body1">{body}</Typography>
         {likeButton}
         <span>{likeCount} likes</span>
-        <Tooltip title="comments" placement="top">
-          <ScreamIconButton>
-            <ChatIcon color="primary" />
-          </ScreamIconButton>
-        </Tooltip>
+        <CustomButton title="comments" placement="top">
+          <ChatIcon color="primary" />
+        </CustomButton>
         <span>{commentCount} comments</span>
       </ScreamCardContent>
     </ScreamCard>

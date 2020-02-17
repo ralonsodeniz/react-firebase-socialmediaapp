@@ -5,13 +5,10 @@
   },
   "hosting": {
     "public": "build",
-    "predeploy": ["npm --prefix \"$RESOURCE_DIR/..\" run build"],
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
     ]
   },
   "storage": {
@@ -26,6 +23,9 @@
     },
     "pubsub": {
       "port": 8085
+    },
+    "hosting": {
+      "port": 5000
     }
   }
 }

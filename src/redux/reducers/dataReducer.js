@@ -35,6 +35,14 @@ const dataReducer = (state = INITIAL_STATE, action) => {
         screams: newScreams,
         loading: false
       };
+    case DATA.DELETE_SCREAM_SUCCESS:
+      return {
+        ...state,
+        screams: state.screams.filter(
+          scream => scream.screamId !== action.payload
+        ),
+        loading: false
+      };
     default:
       return state;
   }

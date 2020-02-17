@@ -5,18 +5,15 @@ import { createStructuredSelector } from "reselect";
 import { selectUserCredentials } from "../../redux/selectors/userSelectors";
 import { updateUserDetailsStart } from "../../redux/actions/userActions";
 
-import Tooltip from "@material-ui/core/Tooltip";
 import EditIcon from "@material-ui/icons/Edit";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import TextField from "@material-ui/core/TextField";
 
-import {
-  EditDetailsIconButton,
-  EditDetailsTextField
-} from "./EditDetails.styles";
+import CustomButton from "../CustomButton/CustomButton";
 
 const selectEditDetailsData = createStructuredSelector({
   userCredentials: selectUserCredentials
@@ -61,18 +58,25 @@ const EditDetails = () => {
     handleClose();
   }, [dispatch, userBio, userWebsite, userLocation]);
 
+  const buttonStyles = {
+    float: "right"
+  };
+
   return (
     <Fragment>
-      <Tooltip title="edit details" placement="top">
-        <EditDetailsIconButton onClick={handleOpen}>
-          <EditIcon color="primary" />
-        </EditDetailsIconButton>
-      </Tooltip>
+      <CustomButton
+        title="edit details"
+        placement="top"
+        handleClick={handleOpen}
+        buttonStyles={buttonStyles}
+      >
+        <EditIcon color="primary" />
+      </CustomButton>
       <Dialog open={showDialog} onClose={handleClose} fullWidth maxWidth="sm">
         <DialogTitle>edit your details</DialogTitle>
         <DialogContent>
           <form>
-            <EditDetailsTextField
+            <TextField
               name="userBio"
               type="text"
               label="bio"
@@ -83,7 +87,7 @@ const EditDetails = () => {
               onChange={handleChange}
               fullWidth
             />
-            <EditDetailsTextField
+            <TextField
               name="userWebsite"
               type="text"
               label="website"
@@ -92,7 +96,7 @@ const EditDetails = () => {
               onChange={handleChange}
               fullWidth
             />
-            <EditDetailsTextField
+            <TextField
               name="userLocation"
               type="text"
               label="location"

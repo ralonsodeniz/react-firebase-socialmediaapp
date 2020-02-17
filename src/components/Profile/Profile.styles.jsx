@@ -2,7 +2,6 @@ import styled from "@material-ui/core/styles/styled";
 import styledComponent from "styled-components";
 
 import Paper from "@material-ui/core/Paper";
-import IconButton from "@material-ui/core/IconButton";
 
 export const ProfileButtonContainer = styledComponent.div`
     text-align: center;
@@ -47,9 +46,3 @@ export const ProfileDetailsContainer = styledComponent.div`
         color: #00bcd4
     }
 `;
-
-export const ProfileIconButton = styled(IconButton)({
-  "&:hover": {
-    cursor: "pointer"
-  }
-});

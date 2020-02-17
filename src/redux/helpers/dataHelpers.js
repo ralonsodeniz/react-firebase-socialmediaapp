@@ -29,3 +29,12 @@ export const getUnikeScreamFromScream = async screamId => {
     throw new Error(jsonObjError);
   }
 };
+
+export const deleteScreamFromScream = async screamId => {
+  try {
+    await axios.delete(`/scream/${screamId}`);
+  } catch (error) {
+    const jsonObjError = JSON.stringify(error.response.data);
+    throw new Error(jsonObjError);
+  }
+};

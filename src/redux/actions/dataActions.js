@@ -38,3 +38,13 @@ export const unlikeScreamSuccess = scream => ({
   type: DATA.UNLIKE_SCREAM_SUCCESS,
   payload: scream
 });
+
+export const deleteScreamStart = screamId => ({
+  type: DATA.DELETE_SCREAM_START,
+  payload: screamId
+});
+
+export const deleteScreamSuccess = screamId => ({
+  type: DATA.DELETE_SCREAM_SUCCESS,
+  payload: screamId
+});

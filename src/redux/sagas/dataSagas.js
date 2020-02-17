@@ -6,13 +6,15 @@ import {
   resetLoadingData,
   setScreamsSuccess,
   likeScreamSuccess,
-  unlikeScreamSuccess
+  unlikeScreamSuccess,
+  deleteScreamSuccess
 } from "../actions/dataActions";
-import { setErrors, clearErrors, setLoadingUi } from "../actions/uiActions";
+import { setErrors, clearErrors } from "../actions/uiActions";
 import {
   getScreamsFromScreams,
   getLikeScreamFromScream,
-  getUnikeScreamFromScream
+  getUnikeScreamFromScream,
+  deleteScreamFromScream
 } from "../helpers/dataHelpers";
 
 // get screams
@@ -66,11 +68,28 @@ export function* unlikeScream({ payload }) {
   }
 }
 
+// delete a scream
+export function* onDeleteScreamStart() {
+  yield takeLatest(DATA.DELETE_SCREAM_START, deleteScream);
+}
+
+export function* deleteScream({ payload }) {
+  try {
+    yield call(deleteScreamFromScream, payload);
+    yield put(deleteScreamSuccess(payload));
+  } catch (error) {
+    const jsObjError = JSON.parse(error.message);
+    yield put(setErrors(jsObjError));
+    console.log(jsObjError);
+  }
+}
+
 // root saga creator for data with all the tiggering generation functions of the saga
 export function* dataSagas() {
   yield all([
     call(onSetScreamsStart),
     call(onLikeScreamStart),
-    call(onUnlikeScreamStart)
+    call(onUnlikeScreamStart),
+    call(onDeleteScreamStart)
   ]);
 }

@@ -25,3 +25,8 @@ export const selectUserNotifications = createSelector(
   [selectUser],
   user => user.notifications
 );
+
+export const selectUserHandle = createSelector(
+  [selectUserCredentials],
+  userCredentials => userCredentials.handle
+);
