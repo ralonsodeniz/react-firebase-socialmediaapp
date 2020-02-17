@@ -1,4 +1,5 @@
 import { USER } from "../types/userTypes";
+import { DATA } from "../types/dataTypes";
 
 const INITIAL_STATE = {
   authenthicated: false,
@@ -23,6 +24,24 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: action.payload
+      };
+    case DATA.LIKE_SCREAM_SUCCESS:
+      return {
+        ...state,
+        likes: [
+          ...state.likes,
+          {
+            userHandle: state.credentials.handle,
+            screamId: action.payload.screamId
+          }
+        ]
+      };
+    case DATA.UNLIKE_SCREAM_SUCCESS:
+      return {
+        ...state,
+        likes: state.likes.filter(
+          like => like.screamId !== action.payload.screamId
+        )
       };
     default:
       return state;

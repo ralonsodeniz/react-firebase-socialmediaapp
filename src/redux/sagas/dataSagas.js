@@ -9,8 +9,13 @@ import {
   unlikeScreamSuccess
 } from "../actions/dataActions";
 import { setErrors, clearErrors, setLoadingUi } from "../actions/uiActions";
-import { getScreamsFromScreams } from "../helpers/dataHelpers";
+import {
+  getScreamsFromScreams,
+  getLikeScreamFromScream,
+  getUnikeScreamFromScream
+} from "../helpers/dataHelpers";
 
+// get screams
 export function* onSetScreamsStart() {
   yield takeLatest(DATA.SET_SCREAMS_START, setScreams);
 }
@@ -29,7 +34,43 @@ export function* setScreams() {
   }
 }
 
+// like a scream
+export function* onLikeScreamStart() {
+  yield takeLatest(DATA.LIKE_SCREAM_START, likeScream);
+}
+
+export function* likeScream({ payload }) {
+  try {
+    const scream = yield call(getLikeScreamFromScream, payload);
+    yield put(likeScreamSuccess(scream));
+  } catch (error) {
+    const jsObjError = JSON.parse(error.message);
+    yield put(setErrors(jsObjError));
+    console.log(jsObjError);
+  }
+}
+
+// unlike a scream
+export function* onUnlikeScreamStart() {
+  yield takeLatest(DATA.UNLIKE_SCREAM_START, unlikeScream);
+}
+
+export function* unlikeScream({ payload }) {
+  try {
+    const scream = yield call(getUnikeScreamFromScream, payload);
+    yield put(unlikeScreamSuccess(scream));
+  } catch (error) {
+    const jsObjError = JSON.parse(error.message);
+    yield put(setErrors(jsObjError));
+    console.log(jsObjError);
+  }
+}
+
 // root saga creator for data with all the tiggering generation functions of the saga
 export function* dataSagas() {
-  yield all([call(onSetScreamsStart)]);
+  yield all([
+    call(onSetScreamsStart),
+    call(onLikeScreamStart),
+    call(onUnlikeScreamStart)
+  ]);
 }

@@ -15,7 +15,7 @@ exports.getAllScreams = async (req, res) => {
     return res.json(screamsData);
   } catch (error) {
     console.log("error while getting screams from db", error.message);
-    return res.status(500).json(error.message);
+    return res.status(500).json({ error: error.message });
   }
 };
 

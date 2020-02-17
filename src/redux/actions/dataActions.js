@@ -19,18 +19,22 @@ export const resetLoadingData = () => ({
   payload: false
 });
 
-export const likeScreamStart = () => ({
-  type: DATA.LIKE_SCREAM_START
+export const likeScreamStart = screamId => ({
+  type: DATA.LIKE_SCREAM_START,
+  payload: screamId
 });
 
-export const likeScreamSuccess = () => ({
-  type: DATA.LIKE_SCREAM_SUCCESS
+export const likeScreamSuccess = scream => ({
+  type: DATA.LIKE_SCREAM_SUCCESS,
+  payload: scream
 });
 
-export const unlikeScreamStart = () => ({
-  type: DATA.UNLIKE_SCREAM_START
+export const unlikeScreamStart = screamId => ({
+  type: DATA.UNLIKE_SCREAM_START,
+  payload: screamId
 });
 
-export const unlikeScreamSuccess = () => ({
-  type: DATA.UNLIKE_SCREAM_SUCCESS
+export const unlikeScreamSuccess = scream => ({
+  type: DATA.UNLIKE_SCREAM_SUCCESS,
+  payload: scream
 });

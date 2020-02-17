@@ -3,7 +3,7 @@ import { UI } from "../types/uiTypes";
 const INITIAL_STATE = {
   errors: {},
   loading: false,
-  initialLoading: false
+  initialLoading: true
 };
 
 const uiReducer = (state = INITIAL_STATE, action) => {
