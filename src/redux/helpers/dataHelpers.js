@@ -48,3 +48,13 @@ export const postScreamToscream = async screamData => {
     throw new Error(jsonObjError);
   }
 };
+
+export const getScreamFromScream = async screamId => {
+  try {
+    const { data } = await axios.get(`/scream/${screamId}`);
+    return data;
+  } catch (error) {
+    const jsonObjError = JSON.stringify(error.response.data);
+    throw new Error(jsonObjError);
+  }
+};

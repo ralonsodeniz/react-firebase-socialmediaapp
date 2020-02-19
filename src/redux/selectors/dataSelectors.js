@@ -14,7 +14,7 @@ export const selectDataLoading = createSelector(
   data => data.loading
 );
 
-export const selectDataScream = createSelector(
+export const selectDataScreamWithId = createSelector(
   [selectDataScreams, (_, screamId) => screamId],
   (screams, screamId) =>
     screams
@@ -38,4 +38,9 @@ export const selectDataScream = createSelector(
           likeCount: 0,
           commentCount: 0
         }
+);
+
+export const selectDataScream = createSelector(
+  [selectData],
+  data => data.scream
 );

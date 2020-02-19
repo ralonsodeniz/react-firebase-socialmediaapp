@@ -32,7 +32,11 @@ const dataReducer = (state = INITIAL_STATE, action) => {
           }
           return accumulator;
         }, []),
-        loading: false
+        loading: false,
+        scream:
+          state.scream.screamId === action.payload.screamId
+            ? action.payload
+            : state.scream
       };
     case DATA.DELETE_SCREAM_SUCCESS:
       return {
@@ -46,6 +50,11 @@ const dataReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         screams: [action.payload, ...state.screams]
+      };
+    case DATA.GET_SCREAM_SUCCESS:
+      return {
+        ...state,
+        scream: action.payload
       };
     default:
       return state;

@@ -8,7 +8,8 @@ import {
   likeScreamSuccess,
   unlikeScreamSuccess,
   deleteScreamSuccess,
-  postScreamSucess
+  postScreamSucess,
+  getScreamSuccess
 } from "../actions/dataActions";
 import { setErrors, clearErrors, setLoadingUi } from "../actions/uiActions";
 import {
@@ -16,7 +17,8 @@ import {
   getLikeScreamFromScream,
   getUnikeScreamFromScream,
   deleteScreamFromScream,
-  postScreamToscream
+  postScreamToscream,
+  getScreamFromScream
 } from "../helpers/dataHelpers";
 
 // get screams
@@ -107,6 +109,24 @@ export function* postScream({ payload }) {
   }
 }
 
+// get a single scream
+export function* onGetScreamStart() {
+  yield takeLatest(DATA.GET_SCREAM_START, getScream);
+}
+
+export function* getScream({ payload }) {
+  try {
+    yield put(setLoadingUi());
+    const scream = yield call(getScreamFromScream, payload);
+    yield put(getScreamSuccess(scream));
+    yield put(clearErrors());
+  } catch (error) {
+    const jsObjError = JSON.parse(error.message);
+    yield put(setErrors(jsObjError));
+    console.log(jsObjError);
+  }
+}
+
 // root saga creator for data with all the tiggering generation functions of the saga
 export function* dataSagas() {
   yield all([
@@ -114,6 +134,7 @@ export function* dataSagas() {
     call(onLikeScreamStart),
     call(onUnlikeScreamStart),
     call(onDeleteScreamStart),
-    call(onPostScreamStart)
+    call(onPostScreamStart),
+    call(onGetScreamStart)
   ]);
 }
