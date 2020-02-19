@@ -1,18 +1,15 @@
 import styled from "@material-ui/core/styles/styled";
 import styledComponent from "styled-components";
 
-import CircularProgress from "@material-ui/core/CircularProgress";
 import DialogContent from "@material-ui/core/DialogContent";
 
-export const ScreamDialogCircularProgress = styled(CircularProgress)({
-  position: "absolute",
-  margin: "auto",
-  left: "35%"
-});
+export const ScreamDialogCircularProgressContainer = styledComponent.div`
+    text-align: center;
+    margin: 50px 0px 
+`;
 
 export const ScreamDialogContent = styled(DialogContent)({
   padding: 20,
-  height: 204,
   position: "relative"
 });
 
@@ -26,4 +23,10 @@ export const ScreamDialogImg = styledComponent.img`
 export const ScreamDialogInvisibleSeparator = styledComponent.hr`
     border: none;
     margin: 4px;
+`;
+
+export const ScreamDialogVisibleSeparator = styledComponent.hr`
+    width: 100%;    
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 `;

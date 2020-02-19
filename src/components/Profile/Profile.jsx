@@ -52,8 +52,6 @@ const Profile = () => {
   const {
     userCredentials: { handle, createdAt, imageUrl, bio, website, location },
     userLoading,
-    userLikes,
-    userNotifications,
     userAuthenticated
   } = useSelector(selectProfileData, shallowEqual);
 

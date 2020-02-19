@@ -15,31 +15,42 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
 import ChatIcon from "@material-ui/icons/Chat";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import {
-  ScreamDialogCircularProgress,
+  ScreamDialogCircularProgressContainer,
   ScreamDialogContent,
   ScreamDialogImg,
-  ScreamDialogInvisibleSeparator
+  ScreamDialogInvisibleSeparator,
+  ScreamDialogVisibleSeparator
 } from "./ScreamDialog.styles";
 
 import CustomButton from "../CustomButton/CustomButton";
 import LikeButton from "../LikeButton/LikeButton";
+import Comments from "../Comments/Comments";
 
 const selectScreamDialogData = createStructuredSelector({
   uiLoading: selectUiLoading,
   scream: selectDataScream
 });
 
-const ScreamDialog = ({ screamId, userHandle }) => {
+const ScreamDialog = ({ screamId }) => {
   const [showDialog, setShowDialog] = useState(false);
 
   const dispatch = useDispatch();
 
-  const { uiLoading, scream } = useSelector(
-    selectScreamDialogData,
-    shallowEqual
-  );
+  const {
+    uiLoading,
+    scream: {
+      userImage,
+      userHandle,
+      createdAt,
+      body,
+      likeCount,
+      commentCount,
+      comments
+    }
+  } = useSelector(selectScreamDialogData, shallowEqual);
 
   const handleOpen = useCallback(() => {
     setShowDialog(true);
@@ -61,34 +72,38 @@ const ScreamDialog = ({ screamId, userHandle }) => {
   };
 
   const dialogMarkup = uiLoading ? (
-    <ScreamDialogCircularProgress size={185} thickness={2} />
+    <ScreamDialogCircularProgressContainer>
+      <CircularProgress size={200} thickness={2} />
+    </ScreamDialogCircularProgressContainer>
   ) : (
     <Grid container>
       <Grid item sm={5}>
-        <ScreamDialogImg src={scream.userImage} alt="profile" />
+        <ScreamDialogImg src={userImage} alt="profile" />
       </Grid>
       <Grid item sm={7}>
         <Typography
           component={Link}
           color="primary"
           variant="h5"
-          to={`/users/${scream.userHandle}`}
+          to={`/users/${userHandle}`}
         >
-          @{scream.userHandle}
+          @{userHandle}
         </Typography>
         <ScreamDialogInvisibleSeparator />
         <Typography variant="body2" color="textSecondary">
-          {dayjs(scream.createdAt).format("h:mm a, MMMM DD YYYY")}
+          {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
         </Typography>
         <ScreamDialogInvisibleSeparator />
-        <Typography variant="body1">{scream.body}</Typography>
+        <Typography variant="body1">{body}</Typography>
         <LikeButton screamId={screamId} />
-        <span>{scream.likeCount} likes</span>
+        <span>{likeCount} likes</span>
         <CustomButton title="comments" placement="top">
           <ChatIcon color="primary" />
         </CustomButton>
-        <span>{scream.commentCount} comments</span>
+        <span>{commentCount} comments</span>
       </Grid>
+      <ScreamDialogVisibleSeparator />
+      <Comments comments={comments} />
     </Grid>
   );
 
@@ -116,8 +131,7 @@ const ScreamDialog = ({ screamId, userHandle }) => {
 };
 
 ScreamDialog.propTypes = {
-  screamId: PropTypes.string.isRequired,
-  userHandle: PropTypes.string.isRequired
+  screamId: PropTypes.string.isRequired
 };
 
 export default ScreamDialog;
