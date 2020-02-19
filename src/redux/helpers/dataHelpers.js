@@ -38,3 +38,13 @@ export const deleteScreamFromScream = async screamId => {
     throw new Error(jsonObjError);
   }
 };
+
+export const postScreamToscream = async screamData => {
+  try {
+    const { data } = await axios.post("/scream", screamData);
+    return data;
+  } catch (error) {
+    const jsonObjError = JSON.stringify(error.response.data);
+    throw new Error(jsonObjError);
+  }
+};

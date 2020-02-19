@@ -8,11 +8,11 @@ import { selectUserAuthenticated } from "../../redux/selectors/userSelectors";
 // imports from material ui
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
-import AddIcon from "@material-ui/icons/Add";
 import HomeIcon from "@material-ui/icons/Home";
 import Notifications from "@material-ui/icons/Notifications";
 
 import CustomButton from "../CustomButton/CustomButton";
+import PostScream from "../PostScream/PostScream";
 
 import { NavbarToolbar } from "./Navbar.styles";
 
@@ -29,9 +29,7 @@ const Navbar = () => {
         {/* material ui button accepts a component that is rendered as button child and its properties also as button properties*/}
         {userAuthenticated ? (
           <Fragment>
-            <CustomButton title="post a scream" handleClick={() => {}}>
-              <AddIcon />
-            </CustomButton>
+            <PostScream />
             <Link to="/">
               <CustomButton title="home">
                 <HomeIcon />

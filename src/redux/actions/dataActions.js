@@ -48,3 +48,13 @@ export const deleteScreamSuccess = screamId => ({
   type: DATA.DELETE_SCREAM_SUCCESS,
   payload: screamId
 });
+
+export const postScreamStart = screamData => ({
+  type: DATA.POST_SCREAM_START,
+  payload: screamData
+});
+
+export const postScreamSucess = scream => ({
+  type: DATA.POST_SCREAM_SUCCESS,
+  payload: scream
+});

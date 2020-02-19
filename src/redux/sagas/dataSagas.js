@@ -7,14 +7,16 @@ import {
   setScreamsSuccess,
   likeScreamSuccess,
   unlikeScreamSuccess,
-  deleteScreamSuccess
+  deleteScreamSuccess,
+  postScreamSucess
 } from "../actions/dataActions";
-import { setErrors, clearErrors } from "../actions/uiActions";
+import { setErrors, clearErrors, setLoadingUi } from "../actions/uiActions";
 import {
   getScreamsFromScreams,
   getLikeScreamFromScream,
   getUnikeScreamFromScream,
-  deleteScreamFromScream
+  deleteScreamFromScream,
+  postScreamToscream
 } from "../helpers/dataHelpers";
 
 // get screams
@@ -45,6 +47,7 @@ export function* likeScream({ payload }) {
   try {
     const scream = yield call(getLikeScreamFromScream, payload);
     yield put(likeScreamSuccess(scream));
+    yield put(clearErrors());
   } catch (error) {
     const jsObjError = JSON.parse(error.message);
     yield put(setErrors(jsObjError));
@@ -61,6 +64,7 @@ export function* unlikeScream({ payload }) {
   try {
     const scream = yield call(getUnikeScreamFromScream, payload);
     yield put(unlikeScreamSuccess(scream));
+    yield put(clearErrors());
   } catch (error) {
     const jsObjError = JSON.parse(error.message);
     yield put(setErrors(jsObjError));
@@ -77,6 +81,25 @@ export function* deleteScream({ payload }) {
   try {
     yield call(deleteScreamFromScream, payload);
     yield put(deleteScreamSuccess(payload));
+    yield put(clearErrors());
+  } catch (error) {
+    const jsObjError = JSON.parse(error.message);
+    yield put(setErrors(jsObjError));
+    console.log(jsObjError);
+  }
+}
+
+// post a scream
+export function* onPostScreamStart() {
+  yield takeLatest(DATA.POST_SCREAM_START, postScream);
+}
+
+export function* postScream({ payload }) {
+  try {
+    yield put(setLoadingUi());
+    const scream = yield call(postScreamToscream, payload);
+    yield put(postScreamSucess(scream));
+    yield put(clearErrors());
   } catch (error) {
     const jsObjError = JSON.parse(error.message);
     yield put(setErrors(jsObjError));
@@ -90,6 +113,7 @@ export function* dataSagas() {
     call(onSetScreamsStart),
     call(onLikeScreamStart),
     call(onUnlikeScreamStart),
-    call(onDeleteScreamStart)
+    call(onDeleteScreamStart),
+    call(onPostScreamStart)
   ]);
 }

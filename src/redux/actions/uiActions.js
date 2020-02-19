@@ -14,6 +14,11 @@ export const setLoadingUi = () => ({
   payload: true
 });
 
+export const resetLoadingUi = () => ({
+  type: UI.LOADING_UI,
+  payload: false
+});
+
 export const setUiInitialLoading = () => ({
   type: UI.UI_INITIAL_LOADING,
   payload: true
