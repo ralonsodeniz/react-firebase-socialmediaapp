@@ -68,3 +68,13 @@ export const postCommentToScream = async (comment, screamId) => {
     throw new Error(jsonObjError);
   }
 };
+
+export const getUserFromUser = async userHandle => {
+  try {
+    const { data } = await axios.get(`/user/${userHandle}`);
+    return data;
+  } catch (error) {
+    const jsonObjError = JSON.stringify(error.response.data);
+    throw new Error(jsonObjError);
+  }
+};

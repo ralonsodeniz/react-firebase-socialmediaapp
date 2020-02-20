@@ -10,7 +10,8 @@ import {
   deleteScreamSuccess,
   postScreamSucess,
   getScreamSuccess,
-  postCommentSuccess
+  postCommentSuccess,
+  getUserSuccess
 } from "../actions/dataActions";
 import { setErrors, clearErrors, setLoadingUi } from "../actions/uiActions";
 import {
@@ -20,7 +21,8 @@ import {
   deleteScreamFromScream,
   postScreamToscream,
   getScreamFromScream,
-  postCommentToScream
+  postCommentToScream,
+  getUserFromUser
 } from "../helpers/dataHelpers";
 
 // get screams
@@ -147,6 +149,27 @@ export function* postComment({ payload }) {
   }
 }
 
+// get an user
+export function* onGetUserStart() {
+  yield takeLatest(DATA.GET_USER_START, getUser);
+}
+
+export function* getUser({ payload }) {
+  try {
+    yield put(setLoadingData());
+    const userData = yield call(getUserFromUser, payload);
+    const { user, screams } = userData;
+    yield put(setScreamsSuccess(screams));
+    yield put(getUserSuccess(user));
+    yield put(clearErrors());
+  } catch (error) {
+    yield put(setScreamsSuccess([]));
+    const jsObjError = JSON.parse(error.message);
+    yield put(setErrors(jsObjError));
+    console.log(jsObjError);
+  }
+}
+
 // root saga creator for data with all the tiggering generation functions of the saga
 export function* dataSagas() {
   yield all([
@@ -156,6 +179,7 @@ export function* dataSagas() {
     call(onDeleteScreamStart),
     call(onPostScreamStart),
     call(onGetScreamStart),
-    call(onPostCommentStart)
+    call(onPostCommentStart),
+    call(onGetUserStart)
   ]);
 }

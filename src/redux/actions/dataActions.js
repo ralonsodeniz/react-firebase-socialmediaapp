@@ -78,3 +78,13 @@ export const postCommentSuccess = comment => ({
   type: DATA.POST_COMMENT_SUCCESS,
   payload: comment
 });
+
+export const getUserStart = userHandle => ({
+  type: DATA.GET_USER_START,
+  payload: userHandle
+});
+
+export const getUserSuccess = userData => ({
+  type: DATA.GET_USER_SUCCESS,
+  payload: userData
+});

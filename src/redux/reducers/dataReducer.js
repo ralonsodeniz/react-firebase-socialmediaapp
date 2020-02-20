@@ -3,7 +3,8 @@ import { DATA } from "../types/dataTypes";
 const INITIAL_STATE = {
   screams: [],
   scream: {},
-  loading: false
+  loading: false,
+  user: {}
 };
 
 const dataReducer = (state = INITIAL_STATE, action) => {
@@ -81,6 +82,11 @@ const dataReducer = (state = INITIAL_STATE, action) => {
           }
           return accumulator;
         }, [])
+      };
+    case DATA.GET_USER_SUCCESS:
+      return {
+        ...state,
+        user: action.payload
       };
     default:
       return state;

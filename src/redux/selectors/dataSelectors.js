@@ -44,3 +44,5 @@ export const selectDataScream = createSelector(
   [selectData],
   data => data.scream
 );
+
+export const selectDataUser = createSelector([selectData], data => data.user);

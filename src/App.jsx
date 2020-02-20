@@ -12,6 +12,7 @@ import { selectUiInitialLoading } from "./redux/selectors/uiSelectors";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Signup from "./pages/signup/signup";
+import User from "./pages/user/user";
 // components
 import Navbar from "./components/Navbar/Navbar";
 import AuthRoute from "./components/AuthRoute/AuthRoute";
@@ -61,6 +62,7 @@ const App = () => {
                 component={Signup}
                 authenticated={authenticated}
               />
+              <Route exact path="/users/:handle" component={User} />
             </Switch>
           )}
         </AppContainer>
