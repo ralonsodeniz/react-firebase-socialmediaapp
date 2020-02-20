@@ -79,11 +79,15 @@ const Scream = ({ screamId, openDialog }) => {
         </Typography>
         <Typography variant="body1">{body}</Typography>
         <LikeButton screamId={screamId} />
-        <span>{likeCount} likes</span>
+        <span>
+          {likeCount} {likeCount === 1 ? "like" : "likes"}
+        </span>
         <CustomButton title="comments" placement="top">
           <ChatIcon color="primary" />
         </CustomButton>
-        <span>{commentCount} comments</span>
+        <span>
+          {commentCount} {commentCount === 1 ? "comment" : "comments"}
+        </span>
         <ScreamDialog
           screamId={screamId}
           userHandle={userHandle}
