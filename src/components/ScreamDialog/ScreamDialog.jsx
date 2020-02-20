@@ -1,4 +1,4 @@
-import React, { useState, useCallback, Fragment } from "react";
+import React, { useState, useCallback, Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { selectUiLoading } from "../../redux/selectors/uiSelectors";
 import { selectDataScream } from "../../redux/selectors/dataSelectors";
 import { getScreamStart } from "../../redux/actions/dataActions";
+import { setLoadingUi } from "../../redux/actions/uiActions";
 
 import Dialog from "@material-ui/core/Dialog";
 import CloseIcon from "@material-ui/icons/Close";
@@ -35,32 +36,41 @@ const selectScreamDialogData = createStructuredSelector({
   scream: selectDataScream
 });
 
-const ScreamDialog = ({ screamId }) => {
-  const [showDialog, setShowDialog] = useState(false);
+const ScreamDialog = ({ screamId, openDialog, userHandle }) => {
+  const [state, setState] = useState({
+    showDialog: false,
+    oldPath: ""
+  });
+
+  const { showDialog, oldPath } = state;
 
   const dispatch = useDispatch();
 
   const {
     uiLoading,
-    scream: {
-      userImage,
-      userHandle,
-      createdAt,
-      body,
-      likeCount,
-      commentCount,
-      comments
-    }
+    scream: { userImage, createdAt, body, likeCount, commentCount, comments }
   } = useSelector(selectScreamDialogData, shallowEqual);
 
   const handleOpen = useCallback(() => {
-    setShowDialog(true);
+    let oldPath = window.location.pathname;
+    const newPath = `/users/${userHandle}/scream/${screamId}`;
+    if (oldPath === newPath) oldPath = `/users/${userHandle}`;
+    window.history.pushState(null, null, newPath);
     dispatch(getScreamStart(screamId));
-  }, [dispatch, screamId]);
+    setState({ showDialog: true, oldPath });
+  }, [dispatch, screamId, userHandle]);
 
   const handleClose = () => {
-    setShowDialog(false);
+    window.history.pushState(null, null, oldPath);
+    setState({ showDialog: false, oldPath: "" });
   };
+
+  useEffect(() => {
+    if (openDialog) {
+      dispatch(setLoadingUi());
+      handleOpen();
+    }
+  }, [openDialog, handleOpen, dispatch]);
 
   const expandTooltipStyles = {
     position: "absolute",
@@ -133,7 +143,9 @@ const ScreamDialog = ({ screamId }) => {
 };
 
 ScreamDialog.propTypes = {
-  screamId: PropTypes.string.isRequired
+  screamId: PropTypes.string.isRequired,
+  openDialog: PropTypes.bool,
+  userHandle: PropTypes.string.isRequired
 };
 
 export default ScreamDialog;

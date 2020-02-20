@@ -33,7 +33,7 @@ const selectScreamData = createStructuredSelector({
   currentUserHanle: selectUserHandle
 });
 
-const Scream = ({ screamId }) => {
+const Scream = ({ screamId, openDialog }) => {
   const memoizedSelectDataScreamWithId = useMemo(
     () => selectDataScreamWithId,
     []
@@ -84,14 +84,19 @@ const Scream = ({ screamId }) => {
           <ChatIcon color="primary" />
         </CustomButton>
         <span>{commentCount} comments</span>
-        <ScreamDialog screamId={screamId} userHandle={userHandle} />
+        <ScreamDialog
+          screamId={screamId}
+          userHandle={userHandle}
+          openDialog={openDialog}
+        />
       </ScreamCardContent>
     </ScreamCard>
   );
 };
 
 Scream.propTypes = {
-  screamId: PropTypes.string.isRequired
+  screamId: PropTypes.string.isRequired,
+  openDialog: PropTypes.bool
 };
 
 export default Scream;

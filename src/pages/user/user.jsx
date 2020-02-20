@@ -29,7 +29,7 @@ const User = () => {
     shallowEqual
   );
 
-  const { handle } = useParams();
+  const { handle, screamId } = useParams();
 
   useEffect(() => {
     dispatch(getUserStart(handle));
@@ -39,10 +39,19 @@ const User = () => {
     <p>Loading...</p>
   ) : !userScreams.length ? (
     <p>no screams from this user</p>
-  ) : (
+  ) : !screamId ? (
     userScreams.map((scream, screamIndex) => (
       <Scream key={screamIndex} screamId={scream.screamId} />
     ))
+  ) : (
+    userScreams.map((scream, screamIndex) => {
+      if (scream.screamId !== screamId)
+        return <Scream key={screamIndex} screamId={scream.screamId} />;
+      else
+        return (
+          <Scream key={screamIndex} screamId={scream.screamId} openDialog />
+        );
+    })
   );
 
   return (

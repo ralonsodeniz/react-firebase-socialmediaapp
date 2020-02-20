@@ -36,6 +36,7 @@ export function* setScreams() {
     const screams = yield call(getScreamsFromScreams);
     yield put(setScreamsSuccess(screams));
     yield put(clearErrors());
+    yield put(resetLoadingData());
   } catch (error) {
     const jsObjError = JSON.parse(error.message);
     yield put(setErrors(jsObjError));
@@ -106,9 +107,11 @@ export function* postScream({ payload }) {
     const scream = yield call(postScreamToscream, payload);
     yield put(postScreamSucess(scream));
     yield put(clearErrors());
+    yield put(resetLoadingData());
   } catch (error) {
     const jsObjError = JSON.parse(error.message);
     yield put(setErrors(jsObjError));
+    yield put(resetLoadingData());
     console.log(jsObjError);
   }
 }
@@ -162,10 +165,12 @@ export function* getUser({ payload }) {
     yield put(setScreamsSuccess(screams));
     yield put(getUserSuccess(user));
     yield put(clearErrors());
+    yield put(resetLoadingData());
   } catch (error) {
-    yield put(setScreamsSuccess([]));
+    // yield put(setScreamsSuccess([]));
     const jsObjError = JSON.parse(error.message);
     yield put(setErrors(jsObjError));
+    yield put(resetLoadingData());
     console.log(jsObjError);
   }
 }

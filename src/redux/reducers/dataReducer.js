@@ -17,8 +17,7 @@ const dataReducer = (state = INITIAL_STATE, action) => {
     case DATA.SET_SCREAMS_SUCCESS:
       return {
         ...state,
-        screams: action.payload,
-        loading: false
+        screams: action.payload
       };
     case DATA.UNLIKE_SCREAM_SUCCESS:
     case DATA.LIKE_SCREAM_SUCCESS:
@@ -33,7 +32,6 @@ const dataReducer = (state = INITIAL_STATE, action) => {
           }
           return accumulator;
         }, []),
-        loading: false,
         scream: {
           ...state.scream,
           likeCount:
@@ -47,8 +45,7 @@ const dataReducer = (state = INITIAL_STATE, action) => {
         ...state,
         screams: state.screams.filter(
           scream => scream.screamId !== action.payload
-        ),
-        loading: false
+        )
       };
     case DATA.POST_SCREAM_SUCCESS:
       return {
