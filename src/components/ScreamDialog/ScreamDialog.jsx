@@ -28,6 +28,7 @@ import {
 import CustomButton from "../CustomButton/CustomButton";
 import LikeButton from "../LikeButton/LikeButton";
 import Comments from "../Comments/Comments";
+import CommentForm from "../CommentForm/CommentForm";
 
 const selectScreamDialogData = createStructuredSelector({
   uiLoading: selectUiLoading,
@@ -103,6 +104,7 @@ const ScreamDialog = ({ screamId }) => {
         <span>{commentCount} comments</span>
       </Grid>
       <ScreamDialogVisibleSeparator />
+      <CommentForm screamId={screamId} />
       <Comments comments={comments} />
     </Grid>
   );

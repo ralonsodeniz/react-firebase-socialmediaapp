@@ -33,10 +33,13 @@ const dataReducer = (state = INITIAL_STATE, action) => {
           return accumulator;
         }, []),
         loading: false,
-        scream:
-          state.scream.screamId === action.payload.screamId
-            ? action.payload
-            : state.scream
+        scream: {
+          ...state.scream,
+          likeCount:
+            state.scream.screamId === action.payload.screamId
+              ? action.payload.likeCount
+              : state.scream.likeCount
+        }
       };
     case DATA.DELETE_SCREAM_SUCCESS:
       return {
@@ -55,6 +58,29 @@ const dataReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         scream: action.payload
+      };
+    case DATA.POST_COMMENT_SUCCESS:
+      return {
+        ...state,
+        scream: {
+          ...state.scream,
+          comments: [action.payload, ...state.scream.comments],
+          commentCount:
+            state.scream.screamId === action.payload.screamId
+              ? state.scream.commentCount + 1
+              : state.scream.commentCount
+        },
+        screams: state.screams.reduce((accumulator, scream) => {
+          if (scream.screamId === action.payload.screamId) {
+            accumulator.push({
+              ...scream,
+              commentCount: scream.commentCount + 1
+            });
+          } else {
+            accumulator.push(scream);
+          }
+          return accumulator;
+        }, [])
       };
     default:
       return state;
