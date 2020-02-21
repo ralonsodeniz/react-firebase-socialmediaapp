@@ -52,7 +52,8 @@ const Notifications = () => {
       []
     );
     setAnchorEl(null);
-    dispatch(markNotificationsReadStart(unreadNotifications));
+    unreadNotifications.length &&
+      dispatch(markNotificationsReadStart(unreadNotifications));
   }, [userNotifications, dispatch]);
 
   const handleReadNotification = useCallback(
