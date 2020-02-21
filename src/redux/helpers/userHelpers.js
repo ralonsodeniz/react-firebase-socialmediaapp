@@ -94,3 +94,12 @@ export const postUserDetailsToUser = async userDetails => {
     throw new Error(jsonObjError);
   }
 };
+
+export const postMakrNotificationsReadToNotifications = async notificationIds => {
+  try {
+    await axios.post("/notifications", notificationIds);
+  } catch (error) {
+    const jsonObjError = JSON.stringify(error.response.data);
+    throw new Error(jsonObjError);
+  }
+};

@@ -46,3 +46,13 @@ export const updateUserDetailsStart = userDetails => ({
   type: USER.UPDATE_USER_DETAILS_START,
   payload: userDetails
 });
+
+export const markNotificationsReadStart = notificationIds => ({
+  type: USER.MARK_NOTIFICATIONS_READ_START,
+  payload: notificationIds
+});
+
+export const markNotificationsReadSusccess = notificationsIds => ({
+  type: USER.MARK_NOTIFICATIONS_READ_SUCCESS,
+  payload: notificationsIds
+});

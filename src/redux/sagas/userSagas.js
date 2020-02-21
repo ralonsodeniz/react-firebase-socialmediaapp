@@ -6,7 +6,8 @@ import {
   setUnauthenticated,
   setAuthenticated,
   setLoadingUser,
-  resetLoadingUser
+  resetLoadingUser,
+  markNotificationsReadSusccess
 } from "../actions/userActions";
 
 import {
@@ -24,7 +25,8 @@ import {
   userLogout,
   checkStoredToken,
   postFormDataToImage,
-  postUserDetailsToUser
+  postUserDetailsToUser,
+  postMakrNotificationsReadToNotifications
 } from "../helpers/userHelpers";
 
 // user signup
@@ -157,6 +159,23 @@ export function* updateUserDetails({ payload }) {
   }
 }
 
+// mark notifications read
+export function* onMarkNotificationsReadStart() {
+  yield takeLatest(USER.MARK_NOTIFICATIONS_READ_START, markNotificationsRead);
+}
+
+export function* markNotificationsRead({ payload }) {
+  try {
+    yield call(postMakrNotificationsReadToNotifications, payload);
+    yield put(markNotificationsReadSusccess(payload));
+  } catch (error) {
+    const jsObjError = JSON.parse(error.message);
+    yield put(setErrors(jsObjError));
+    yield put(resetLoadingUser());
+    console.log(jsObjError);
+  }
+}
+
 // root saga creator for user with all the tiggering generation functions of the saga
 export function* userSagas() {
   yield all([
@@ -165,6 +184,7 @@ export function* userSagas() {
     call(onSignoutStart),
     call(onCheckUserStart),
     call(onUploadUserImageStart),
-    call(onUpdateUserDetailsStart)
+    call(onUpdateUserDetailsStart),
+    call(onMarkNotificationsReadStart)
   ]);
 }

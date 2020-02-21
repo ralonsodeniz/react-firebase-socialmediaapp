@@ -43,6 +43,24 @@ const userReducer = (state = INITIAL_STATE, action) => {
           like => like.screamId !== action.payload.screamId
         )
       };
+    case USER.MARK_NOTIFICATIONS_READ_SUCCESS:
+      const newNotifications =
+        action.payload.length > 1
+          ? state.notifications.map(notification => ({
+              ...notification,
+              read: true
+            }))
+          : state.notifications.reduce((accumulator, notification) => {
+              notification.notificationId === action.payload[0]
+                ? accumulator.push({ ...notification, read: true })
+                : accumulator.push(notification);
+              return accumulator;
+            }, []);
+
+      return {
+        ...state,
+        notifications: newNotifications
+      };
     default:
       return state;
   }

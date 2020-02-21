@@ -9,10 +9,10 @@ import { selectUserAuthenticated } from "../../redux/selectors/userSelectors";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import HomeIcon from "@material-ui/icons/Home";
-import Notifications from "@material-ui/icons/Notifications";
 
 import CustomButton from "../CustomButton/CustomButton";
 import PostScream from "../PostScream/PostScream";
+import Notifications from "../Notifications/Notifications";
 
 import { NavbarToolbar } from "./Navbar.styles";
 
@@ -35,9 +35,7 @@ const Navbar = () => {
                 <HomeIcon />
               </CustomButton>
             </Link>
-            <CustomButton title="notifications" handleClick={() => {}}>
-              <Notifications />
-            </CustomButton>
+            <Notifications />
           </Fragment>
         ) : (
           <Fragment>
