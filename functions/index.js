@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const app = require("express")();
 const dotenv = require("dotenv");
+const cors = require("cors");
 dotenv.config();
 const { db } = require("./helpers/admin");
 
@@ -23,6 +24,9 @@ const {
   markNotificationsRead
 } = require("./handlers/users");
 const { FBAuth } = require("./helpers/middlewares");
+
+// we tell express app to use cors middleware
+app.use(cors());
 
 // Screams routes
 // get screams from firestore

@@ -41,6 +41,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://europe-west1-fbintegration-7e5f6.cloudfunctions.net/api"
+  }
 }
