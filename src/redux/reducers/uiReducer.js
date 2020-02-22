@@ -25,11 +25,6 @@ const uiReducer = (state = INITIAL_STATE, action) => {
         ...state,
         loading: action.payload
       };
-    case UI.UI_INITIAL_LOADING:
-      return {
-        ...state,
-        initialLoading: action.payload
-      };
     default:
       return state;
   }

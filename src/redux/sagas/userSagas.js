@@ -10,13 +10,7 @@ import {
   markNotificationsReadSusccess
 } from "../actions/userActions";
 
-import {
-  clearErrors,
-  setErrors,
-  setLoadingUi,
-  resetUiInitialLoading,
-  setUiInitialLoading
-} from "../actions/uiActions";
+import { clearErrors, setErrors, setLoadingUi } from "../actions/uiActions";
 
 import {
   postUserDataToLogin,
@@ -99,7 +93,7 @@ export function* onCheckUserStart() {
 
 export function* checkUser() {
   try {
-    yield put(setUiInitialLoading());
+    yield put(setLoadingUser());
     const isTokenValid = yield call(checkStoredToken);
     if (isTokenValid) {
       const userData = yield call(getDataFromUser);
@@ -109,12 +103,10 @@ export function* checkUser() {
       yield call(userLogout);
       yield put(setUnauthenticated());
     }
-    yield put(resetUiInitialLoading());
   } catch (error) {
     const jsObjError = JSON.parse(error.message);
     yield put(setErrors(jsObjError));
     yield put(resetLoadingUser());
-    yield put(resetUiInitialLoading());
     console.log(jsObjError);
   }
 }

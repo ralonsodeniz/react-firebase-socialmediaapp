@@ -16,6 +16,7 @@ import {
 
 import EditDetails from "../EditDetails/EditDetails";
 import CustomButton from "../CustomButton/CustomButton";
+import ProfileSkeleton from "../../components/ProfileSkeleton/ProfileSkeleton";
 
 import Button from "@material-ui/core/Button";
 import MuiLink from "@material-ui/core/Link";
@@ -166,7 +167,7 @@ const Profile = () => {
       </ProfilePaper>
     )
   ) : (
-    <p>loading</p>
+    <ProfileSkeleton />
   );
 
   return profileMarkUp;

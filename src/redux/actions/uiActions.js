@@ -18,13 +18,3 @@ export const resetLoadingUi = () => ({
   type: UI.LOADING_UI,
   payload: false
 });
-
-export const setUiInitialLoading = () => ({
-  type: UI.UI_INITIAL_LOADING,
-  payload: true
-});
-
-export const resetUiInitialLoading = () => ({
-  type: UI.UI_INITIAL_LOADING,
-  payload: false
-});

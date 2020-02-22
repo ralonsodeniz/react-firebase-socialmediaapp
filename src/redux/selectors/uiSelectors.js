@@ -7,8 +7,3 @@ const selectUi = state => state.ui;
 export const selectUiLoading = createSelector([selectUi], ui => ui.loading);
 
 export const selectUiErrors = createSelector([selectUi], ui => ui.errors);
-
-export const selectUiInitialLoading = createSelector(
-  [selectUi],
-  ui => ui.initialLoading
-);

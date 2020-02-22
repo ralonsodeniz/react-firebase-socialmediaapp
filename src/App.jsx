@@ -7,7 +7,6 @@ import { createStructuredSelector } from "reselect";
 
 import { checkUserStart } from "./redux/actions/userActions";
 import { selectUserAuthenticated } from "./redux/selectors/userSelectors";
-import { selectUiInitialLoading } from "./redux/selectors/uiSelectors";
 // pages
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
@@ -21,17 +20,13 @@ import { GlobalStyles, theme } from "./global.styles";
 import { AppContainer } from "./App.styles";
 
 const selectAppData = createStructuredSelector({
-  authenticated: selectUserAuthenticated,
-  uiInitialLoading: selectUiInitialLoading
+  authenticated: selectUserAuthenticated
 });
 
 const App = () => {
   const dispatch = useDispatch();
 
-  const { authenticated, uiInitialLoading } = useSelector(
-    selectAppData,
-    shallowEqual
-  );
+  const { authenticated } = useSelector(selectAppData, shallowEqual);
 
   useEffect(() => {
     // we check if there is a user token on app refresh and if it is valid
@@ -45,31 +40,27 @@ const App = () => {
         <GlobalStyles />
         <Navbar />
         <AppContainer>
-          {uiInitialLoading ? (
-            <div> app is loading </div>
-          ) : (
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <AuthRoute
-                exact
-                path="/login"
-                component={Login}
-                authenticated={authenticated}
-              />
-              <AuthRoute
-                exact
-                path="/signup"
-                component={Signup}
-                authenticated={authenticated}
-              />
-              <Route exact path="/users/:handle" component={User} />
-              <Route
-                exact
-                path="/users/:handle/scream/:screamId"
-                component={User}
-              />
-            </Switch>
-          )}
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <AuthRoute
+              exact
+              path="/login"
+              component={Login}
+              authenticated={authenticated}
+            />
+            <AuthRoute
+              exact
+              path="/signup"
+              component={Signup}
+              authenticated={authenticated}
+            />
+            <Route exact path="/users/:handle" component={User} />
+            <Route
+              exact
+              path="/users/:handle/scream/:screamId"
+              component={User}
+            />
+          </Switch>
         </AppContainer>
       </div>
     </MuiThemeProvider>

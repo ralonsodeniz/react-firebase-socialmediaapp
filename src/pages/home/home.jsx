@@ -12,6 +12,7 @@ import Grid from "@material-ui/core/Grid";
 
 import Scream from "../../components/Scream/Scream";
 import Profile from "../../components/Profile/Profile";
+import ScreamSkeleton from "../../components/ScreamSkeleton/ScreamSkeleton";
 
 const selectHomeData = createStructuredSelector({
   screams: selectDataScreams,
@@ -58,7 +59,7 @@ const Home = () => {
         <Scream key={screamIndex} screamId={scream.screamId} />
       ))
     ) : (
-      <p>Screams loading...</p>
+      <ScreamSkeleton />
     );
 
   return (

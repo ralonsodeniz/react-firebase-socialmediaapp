@@ -14,6 +14,8 @@ import Grid from "@material-ui/core/Grid";
 
 import Scream from "../../components/Scream/Scream";
 import StaticProfile from "../../components/StaticProfile/StaticProfile";
+import ScreamSkeleton from "../../components/ScreamSkeleton/ScreamSkeleton";
+import ProfileSkeleton from "../../components/ProfileSkeleton/ProfileSkeleton";
 
 const selectUserData = createStructuredSelector({
   userScreams: selectDataScreams,
@@ -36,7 +38,7 @@ const User = () => {
   }, [dispatch, handle]);
 
   const userScreamsMarkup = dataLoading ? (
-    <p>Loading...</p>
+    <ScreamSkeleton />
   ) : !userScreams.length ? (
     <p>no screams from this user</p>
   ) : !screamId ? (
@@ -61,7 +63,7 @@ const User = () => {
       </Grid>
       <Grid item sm={4} xs={12}>
         {dataLoading ? (
-          <p>Loading...</p>
+          <ProfileSkeleton />
         ) : (
           <StaticProfile profile={selectedUser} />
         )}

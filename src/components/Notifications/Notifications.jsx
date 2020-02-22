@@ -134,7 +134,7 @@ const Notifications = () => {
           <Typography color="initial" variant="caption">
             check all unread notifications
           </Typography>
-          <DoneAllIcon style={{ marginLeft: 10 }} />
+          <DoneAllIcon fontSize="small" style={{ marginLeft: 10 }} />
         </MenuItem>
       </Menu>
     </Fragment>
