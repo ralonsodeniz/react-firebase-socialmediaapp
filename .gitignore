@@ -29,3 +29,7 @@ firestore.indexes.json
 firestore.rules
 storage.rules
 /.firebase
+
+/functions/node_modules/
+/functions/.env*
+/functions/config
