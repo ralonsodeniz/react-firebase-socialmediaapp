@@ -28,3 +28,5 @@ Rework based on the tutorial [Full Stack React & Firebase Tutorial - Build a soc
   - Firestore NoSQL Database.
   - Firebase Storage to store the users files.
   - Google Cloud Functions to execute on demand backend functions under node.js enviorment.
+- [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
+- [Dayjs](https://github.com/iamkun/dayjs) - JavaScript library that parses, validates, manipulates, and displays dates and times.
