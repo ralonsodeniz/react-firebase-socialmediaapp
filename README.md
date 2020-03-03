@@ -30,3 +30,5 @@ Rework based on the tutorial [Full Stack React & Firebase Tutorial - Build a soc
   - Google Cloud Functions to execute on demand backend functions under node.js enviorment.
 - [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
 - [Dayjs](https://github.com/iamkun/dayjs) - JavaScript library that parses, validates, manipulates, and displays dates and times.
+- [Node.js](https://nodejs.org/en/) - JavaScript runtime built on Chrome's V8 JavaScript engine used to build google cloud functions.
+- [Express.js](https://expressjs.com/) - Unopinionated, minimalist web framework for Node.js used to build backend REST API for google cloud functions.
